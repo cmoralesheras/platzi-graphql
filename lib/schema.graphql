@@ -1,0 +1,51 @@
+type Course {
+    _id: ID!
+    title: String!
+    teacher: String
+    description: String!
+    topic: String
+}
+
+type Student {
+    _id: ID!
+    name: String
+    mail: String
+}
+
+type Query {
+    getCourses: [Course],
+    getCourse(id: ID!): Course
+    getStudents: [Student],
+    getStudent(id: ID!): Student
+}
+
+input CourseInput {
+    title: String!
+    teacher: String
+    description: String!
+    topic: String
+}
+
+input CourseEditInput {
+    title: String
+    teacher: String
+    description: String
+    topic: String
+}
+
+input StudentInput {
+    name: String!
+    mail: String!
+}
+
+input StudentEditInput {
+    name: String
+    mail: String
+}
+
+type Mutation {
+    createCourse(input: CourseInput!): Course
+    editCourse(_id: ID!, input: CourseEditInput!): Course
+    createStudent(input: StudentInput!): Student
+    editStudent(_id: ID!, input: StudentEditInput!): Student
+}
